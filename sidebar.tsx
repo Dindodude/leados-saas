@@ -5,7 +5,9 @@ type SidebarProps = {
 };
 
 export function Sidebar({ dashboardId }: SidebarProps) {
-  const dashboardBase = dashboardId ? `/app/dashboards/${dashboardId}` : "/app";
+  const pipelineHref = dashboardId ? `/app/dashboards/${dashboardId}` : "/app";
+  const scriptsHref = dashboardId ? `/app/dashboards/${dashboardId}/scripts` : "/app/dashboards";
+  const formsHref = dashboardId ? `/app/dashboards/${dashboardId}/forms` : "/app/dashboards";
 
   return (
     <aside className="sidebar">
@@ -20,9 +22,9 @@ export function Sidebar({ dashboardId }: SidebarProps) {
       <nav className="sidebar-nav">
         <Link href="/app">Overview</Link>
         <Link href="/app/dashboards">Dashboards</Link>
-        <Link href={`${dashboardBase}`}>Pipeline</Link>
-        <Link href={`${dashboardBase}/scripts`}>Scripts</Link>
-        <Link href={`${dashboardBase}/forms`}>Instant Forms</Link>
+        <Link href={pipelineHref as any}>Pipeline</Link>
+        <Link href={scriptsHref as any}>Scripts</Link>
+        <Link href={formsHref as any}>Instant Forms</Link>
       </nav>
     </aside>
   );
